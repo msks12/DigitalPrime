@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalPrime | خدمات رقمية مميزة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <link rel=""
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <header>
+        <a href="#" class="logo">
+            <i class="fas fa-bolt logo-icon"></i>
+            <span>DigitalPrime</span>
+        </a>
+        
+        <nav>
+            <ul>
+                <li><a href="#services">الخدمات</a></li>
+                <li><a href="#entertainment">الترفيه</a></li>
+                <li><a href="#music">الموسيقى</a></li>
+                <li><a href="#education">التعليم</a></li>
+                <li><a href="#productivity">الإنتاجية</a></li>
+            </ul>
+        </nav>
+        
+        <div class="header-actions">
+            <button class="btn btn-register" id="connectWalletBtn">
+                <i class="fas fa-wallet"></i> طرق الدفع
+            </button>
+        </div>
+    </header>
+
+    <!-- واجهة اختيار المحفظة -->
+    <div class="wallet-modal" id="walletModal">
+        <div class="wallet-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <h2 class="wallet-title"><i class="fas fa-wallet"></i> اختر طريقة الدفع</h2>
+            
+            <div class="wallet-buttons">
+                <button class="wallet-btn" id="connectMetaMask">
+                    <i class="fab fa-ethereum"></i>
+                    <span>MetaMask</span>
+                </button>
+                
+                <button class="wallet-btn" id="connectTrustWallet">
+                    <i class="fas fa-wallet"></i>
+                    <span>Trust Wallet</span>
+                </button>
+                
+                <button class="wallet-btn" id="connectTon">
+                    <i class="fab fa-telegram"></i>
+                    <span>TON Wallet</span>
+                </button>
+            </div>
+
+            <div class="payment-option" id="creditCardOption">
+                <i class="far fa-credit-card"></i>
+                <div class="details">
+                    <h4>بطاقة ائتمانية/خصم</h4>
+                    <p>فيزا، ماستركارد، أمريكان إكسبريس</p>
+                </div>
+            </div>
+            
+            <div class="wallet-info">
+                <p>اختر طريقة الدفع المفضلة لديك لإتمام عملية الشراء</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- واجهة تفعيل الدفع -->
+    <div class="payment-modal" id="paymentModal">
+        <div class="payment-content">
+            <button class="close-payment-modal" id="closePaymentModal">&times;</button>
+            <h2 class="payment-title" id="paymentMethodTitle">
+                <i class="far fa-credit-card"></i> 
+                الدفع بالبطاقة الائتمانية
+            </h2>
+            
+            <div class="payment-summary">
+                <h4><i class="fas fa-shopping-cart"></i> ملخص الطلب</h4>
+                <div class="summary-item">
+                    <span>الخدمة:</span>
+                    <span id="summary-service">Netflix Premium</span>
+                </div>
+                <div class="summary-item">
+                    <span>المدة:</span>
+                    <span id="summary-duration">شهر واحد</span>
+                </div>
+                <div class="summary-item">
+                    <span>المبلغ:</span>
+                    <span id="summary-amount" class="price-tag">3 TON</span>
+                </div>
+            </div>
+            
+            <form id="paymentForm" class="payment-form">
+                <div class="form-group full-width">
+                    <label for="card-name"><i class="fas fa-user"></i> اسم صاحب البطاقة</label>
+                    <input type="text" id="card-name" class="form-control" placeholder="الاسم كما هو على البطاقة" required>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="card-number"><i class="fas fa-credit-card"></i> رقم البطاقة</label>
+                    <input type="text" id="card-number" class="form-control" placeholder="0000 0000 0000 0000" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="card-expiry"><i class="fas fa-calendar-alt"></i> تاريخ الانتهاء</label>
+                    <input type="text" id="card-expiry" class="form-control" placeholder="MM/YY" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="card-cvc"><i class="fas fa-lock"></i> رمز الحماية (CVC)</label>
+                    <input type="text" id="card-cvc" class="form-control" placeholder="123" required>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="card-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                    <input type="email" id="card-email" class="form-control" placeholder="email@example.com" required>
+                </div>
+                
+                <button type="submit" class="payment-submit-btn">
+                    <i class="fas fa-lock"></i> تأكيد الدفع
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <main>
+        <!-- قسم البطل -->
+        <section class="hero">
+            <h1>خدمات رقمية مميزة بأسعار تنافسية</h1>
+            <p>استمتع بأفضل خدمات الترفيه والاتصالات الرقمية مع دفع آمن بواسطة طرق متعددة. شحن فوري وضمان استعادة الأموال</p>
+            
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="startShopping">
+                    <i class="fas fa-shopping-cart"></i> ابدأ الشراء الآن
+                </button>
+                <button class="btn btn-primary" id="getDiscount">
+                    <i class="fas fa-gift"></i> احصل على خصم 20%
+                </button>
+            </div>
+        </section>
+
+        <!-- قسم الخصومات -->
+        <div class="discount-banner">
+            <h3><i class="fas fa-tag"></i> عرض خاص لمدة محدودة!</h3>
+            <p>احصل على خصم 20% على جميع خدمات Netflix و Spotify عند الشراء لأول مرة باستخدام الكود: PRIME20</p>
+        </div>
+
+        <!-- قسم الخدمات -->
+        <section id="services" class="services">
+            <div class="section-title">
+                <h2>خدماتنا المميزة</h2>
+                <p>اختر من بين أفضل الخدمات الرقمية بأسعار تنافسية</p>
+            </div>
+            
+            <h3 class="category-title" id="entertainment">🎬 برامج الترفيه والميديا</h3>
+            <div class="services-grid">
+                <!-- خدمة Netflix -->
+                <div class="service-card netflix-card visible">
+                    <div class="service-header">
+                        <i class="fab fa-netflix service-icon"></i>
+                        <h3>Netflix Premium</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>استمتع بأفضل محتوى ترفيهي بدون حدود على جميع الأجهزة</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">3 TON</span></li>
+                                <li>شهرين <span class="price-tag">5.5 TON</span></li>
+                                <li>3 أشهر <span class="price-tag">8.5 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">28 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="netflix-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="netflix-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="netflix-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="netflix-period" class="form-control">
+                                    <option value="1">شهر واحد</option>
+                                    <option value="2">شهرين</option>
+                                    <option value="3">3 أشهر</option>
+                                    <option value="12">سنة كاملة</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Netflix Premium" data-price="3">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة YouTube Premium -->
+                <div class="service-card youtube-card visible">
+                    <div class="service-header">
+                        <i class="fab fa-youtube service-icon"></i>
+                        <h3>YouTube Premium</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>مشاهدة بدون إعلانات، تحميل الفيديوهات، تشغيل بالخلفية</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">5 TON</span></li>
+                                <li>3 أشهر <span class="price-tag">13.5 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">45 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="youtube-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="youtube-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="youtube-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="youtube-period" class="form-control">
+                                    <option value="1">شهر واحد</option>
+                                    <option value="3">3 أشهر</option>
+                                    <option value="12">سنة كاملة</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="YouTube Premium" data-price="5">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Amazon Prime Video -->
+                <div class="service-card prime-card visible">
+                    <div class="service-header">
+                        <i class="fab fa-amazon service-icon"></i>
+                        <h3>Amazon Prime Video</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>أفلام ومسلسلات، بعضها حصري</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">4 TON</span></li>
+                                <li>3 أشهر <span class="price-tag">11 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">35 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="amazon-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="amazon-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="amazon-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="amazon-period" class="form-control">
+                                    <option value="1">شهر واحد</option>
+                                    <option value="3">3 أشهر</option>
+                                    <option value="12">سنة كاملة</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Amazon Prime Video" data-price="4">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Disney+ -->
+                <div class="service-card disney-card visible">
+                    <div class="service-header">
+                        <i class="fab fa-disney service-icon"></i>
+                        <h3>Disney+</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>محتوى ديزني، مارفل، بيكسار، وستار وورز</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">3.5 TON</span></li>
+                                <li>3 أشهر <span class="price-tag">9.5 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">30 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="disney-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="disney-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="disney-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="disney-period" class="form-control">
+                                    <option value="1">شهر واحد</option>
+                                    <option value="3">3 أشهر</option>
+                                    <option value="12">سنة كاملة</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Disney+" data-price="3.5">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Shahid VIP -->
+                <div class="service-card shahid-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-tv service-icon"></i>
+                        <h3>Shahid VIP</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>محتوى عربي وأفلام ومسلسلات حصرية</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">2.5 TON</span></li>
+                                <li>3 أشهر <span class="price-tag">7 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">20 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="shahid-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="shahid-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="shahid-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="shahid-period" class="form-control">
+                                    <option value="1">شهر واحد</option>
+                                    <option value="3">3 أشهر</option>
+                                    <option value="12">سنة كاملة</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Shahid VIP" data-price="2.5">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Apple TV+ -->
+                <div class="service-card apple-music-card visible">
+                    <div class="service-header">
+                        <i class="fab fa-apple service-icon"></i>
+                        <h3>Apple TV+</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>محتوى أصلي من آبل (Apple Originals)</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">3 TON</span></li>
+                                <li>3 أشهر <span class="price-tag">8 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">25 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="appletv-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="appletv-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="appletv-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="appletv-period" class="form-control">
+                                    <option value="1">شهر واحد</option>
+                                    <option value="3">3 أشهر</option>
+                                    <option value="12">سنة كاملة</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Apple TV+" data-price="3">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="category-title" id="music">🎧 برامج الموسيقى والصوت</h3>
+            <div class="services-grid">
+                <!-- خدمة Spotify -->
+                <div class="service-card spotify-card visible">
+                    <div class="service-header">
+                        <i class="fab fa-spotify service-icon"></i>
+                        <h3>Spotify Premium</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>موسيقى بدون إعلانات وتشغيل غير محدود على جميع الأجهزة</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">2.5 TON</span></li>
+                                <li>شهرين <span class="price-tag">4.8 TON</span></li>
+                                <li>3 أشهر <span class="price-tag">6.5 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">22 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="spotify-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="spotify-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="spotify-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="spotify-period" class="form-control">
+                                    <option value="1">شهر واحد</option>
+                                    <option value="2">شهرين</option>
+                                    <option value="3">3 أشهر</option>
+                                    <option value="12">سنة كاملة</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Spotify Premium" data-price="2.5">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Anghami Plus -->
+                <div class="service-card anghami-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-music service-icon"></i>
+                        <h3>Anghami Plus</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>مشابه لـ Spotify بس عربي</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">2 TON</span></li>
+                                <li>3 أشهر <span class="price-tag">5.5 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">18 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="anghami-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="anghami-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="anghami-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="anghami-period" class="form-control">
+                                    <option value="1">شهر واحد</option>
+                                    <option value="3">3 أشهر</option>
+                                    <option value="12">سنة كاملة</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Anghami Plus" data-price="2">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Apple Music -->
+                <div class="service-card apple-music-card visible">
+                    <div class="service-header">
+                        <i class="fab fa-apple service-icon"></i>
+                        <h3>Apple Music</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>مكتبة موسيقية ضخمة، جودة صوت عالية</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">3 TON</span></li>
+                                <li>3 أشهر <span class="price-tag">8 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">25 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="apple-music-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="apple-music-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="apple-music-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="apple-music-period" class="form-control">
+                                    <option value="1">شهر واحد</option>
+                                    <option value="3">3 أشهر</option>
+                                    <option value="12">سنة كاملة</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Apple Music" data-price="3">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Deezer Premium -->
+                <div class="service-card deezer-card visible">
+                    <div class="service-header">
+                        <i class="fab fa-deezer service-icon"></i>
+                        <h3>Deezer Premium</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>بديل لـ Spotify، مع إمكانية التحميل</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">2.8 TON</span></li>
+                                <li>3 أشهر <span class="price-tag">7.5 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">24 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="deezer-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="deezer-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="deezer-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="deezer-period" class="form-control">
+                                    <option value="1">شهر واحد</option>
+                                    <option value="3">3 أشهر</option>
+                                    <option value="12">سنة كاملة</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Deezer Premium" data-price="2.8">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة YouTube Music Premium -->
+                <div class="service-card youtube-card visible">
+                    <div class="service-header">
+                        <i class="fab fa-youtube service-icon"></i>
+                        <h3>YouTube Music Premium</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>استماع بدون إعلانات وتشغيل بالخلفية</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">3.2 TON</span></li>
+                                <li>3 أشهر <span class="price-tag">8.5 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">27 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="ytmusic-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="ytmusic-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="ytmusic-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="ytmusic-period" class="form-control">
+                                    <option value="1">شهر واحد</option>
+                                    <option value="3">3 أشهر</option>
+                                    <option value="12">سنة كاملة</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="YouTube Music Premium" data-price="3.2">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="category-title" id="education">📚 برامج التعليم والتعلم الذاتي</h3>
+            <div class="services-grid">
+                <!-- خدمة Coursera Plus -->
+                <div class="service-card coursera-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-graduation-cap service-icon"></i>
+                        <h3>Coursera Plus</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>دورات من جامعات عالمية بشهادة</p>
+                            
+                            <ul class="pricing-list">
+                                <li>3 أشهر <span class="price-tag">25 TON</span></li>
+                                <li>6 أشهر <span class="price-tag">45 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">75 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="coursera-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="coursera-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="coursera-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="coursera-period" class="form-control">
+                                    <option value="3">3 أشهر</option>
+                                    <option value="6">6 أشهر</option>
+                                    <option value="12">سنة كاملة</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Coursera Plus" data-price="25">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Udemy -->
+                <div class="service-card microsoft-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-laptop-code service-icon"></i>
+                        <h3>Udemy Premium</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>دورات احترافية في مختلف المجالات</p>
+                            
+                            <ul class="pricing-list">
+                                <li>اشتراك شهري <span class="price-tag">8 TON</span></li>
+                                <li>اشتراك سنوي <span class="price-tag">70 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="udemy-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="udemy-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="udemy-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="udemy-period" class="form-control">
+                                    <option value="1">شهري</option>
+                                    <option value="12">سنوي</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Udemy Premium" data-price="8">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Duolingo Super -->
+                <div class="service-card duolingo-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-language service-icon"></i>
+                        <h3>Duolingo Super</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>لتعلم اللغات بدون إعلانات ومزايا إضافية</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">2 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">18 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="duolingo-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="duolingo-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="duolingo-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="duolingo-period" class="form-control">
+                                    <option value="1">شهري</option>
+                                    <option value="12">سنوي</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Duolingo Super" data-price="2">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="category-title" id="productivity">💼 برامج الإنتاجية والمكتب</h3>
+            <div class="services-grid">
+                <!-- خدمة Microsoft 365 -->
+                <div class="service-card microsoft-card visible">
+                    <div class="service-header">
+                        <i class="fab fa-microsoft service-icon"></i>
+                        <h3>Microsoft 365</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>Word, Excel, PowerPoint, OneDrive بمزايا إضافية</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">6 TON</span></li>
+                                <li>6 أشهر <span class="price-tag">30 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">55 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="microsoft-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="microsoft-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="microsoft-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="microsoft-period" class="form-control">
+                                    <option value="1">شهري</option>
+                                    <option value="6">6 أشهر</option>
+                                    <option value="12">سنوي</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Microsoft 365" data-price="6">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Google One -->
+                <div class="service-card google-card visible">
+                    <div class="service-header">
+                        <i class="fab fa-google service-icon"></i>
+                        <h3>Google One</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>سعة تخزين إضافية على Google Drive وGmail وصور Google</p>
+                            
+                            <ul class="pricing-list">
+                                <li>100GB - شهر واحد <span class="price-tag">1.5 TON</span></li>
+                                <li>200GB - شهر واحد <span class="price-tag">2.5 TON</span></li>
+                                <li>2TB - شهر واحد <span class="price-tag">8 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="google-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="google-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="google-plan"><i class="fas fa-hdd"></i> خطة التخزين</label>
+                                <select id="google-plan" class="form-control">
+                                    <option value="100">100GB</option>
+                                    <option value="200">200GB</option>
+                                    <option value="2000">2TB</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Google One" data-price="1.5">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Notion Plus -->
+                <div class="service-card adobe-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-sticky-note service-icon"></i>
+                        <h3>Notion Plus</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>أدوات إدارة مشاريع وكتابة وملاحظات</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">3 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">28 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="notion-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="notion-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="notion-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="notion-period" class="form-control">
+                                    <option value="1">شهري</option>
+                                    <option value="12">سنوي</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Notion Plus" data-price="3">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Evernote Premium -->
+                <div class="service-card bitdefender-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-book service-icon"></i>
+                        <h3>Evernote Premium</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>تنظيم ملاحظات، مزامنة عبر الأجهزة</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">2.8 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">25 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="evernote-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="evernote-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="evernote-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="evernote-period" class="form-control">
+                                    <option value="1">شهري</option>
+                                    <option value="12">سنوي</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Evernote Premium" data-price="2.8">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Todoist Premium -->
+                <div class="service-card duolingo-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-tasks service-icon"></i>
+                        <h3>Todoist Premium</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>لإدارة المهام وتنظيم الوقت</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">2.2 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">20 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="todoist-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="todoist-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="todoist-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="todoist-period" class="form-control">
+                                    <option value="1">شهري</option>
+                                    <option value="12">سنوي</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Todoist Premium" data-price="2.2">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="category-title">📸 برامج الصور والتصميم</h3>
+            <div class="services-grid">
+                <!-- خدمة Canva Pro -->
+                <div class="service-card canva-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-paint-brush service-icon"></i>
+                        <h3>Canva Pro</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>تصميم احترافي بسهولة، قوالب جاهزة</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">4 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">35 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="canva-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="canva-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="canva-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="canva-period" class="form-control">
+                                    <option value="1">شهري</option>
+                                    <option value="12">سنوي</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Canva Pro" data-price="4">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Adobe Creative Cloud -->
+                <div class="service-card adobe-card visible">
+                    <div class="service-header">
+                        <i class="fab fa-adobe service-icon"></i>
+                        <h3>Adobe Creative Cloud</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>فوتوشوب، إليستريتور، بريميير، إلخ</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">12 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">110 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="adobe-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="adobe-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="adobe-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="adobe-period" class="form-control">
+                                    <option value="1">شهري</option>
+                                    <option value="12">سنوي</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Adobe Creative Cloud" data-price="12">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Picsart Gold -->
+                <div class="service-card spotify-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-camera service-icon"></i>
+                        <h3>Picsart Gold</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>تعديل صور احترافي ومحتوى حصري</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">3.5 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">30 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="picsart-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="picsart-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="picsart-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="picsart-period" class="form-control">
+                                    <option value="1">شهري</option>
+                                    <option value="12">سنوي</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Picsart Gold" data-price="3.5">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="category-title">🛡️ برامج الحماية والـ VPN</h3>
+            <div class="services-grid">
+                <!-- خدمة NordVPN -->
+                <div class="service-card nordvpn-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-shield-alt service-icon"></i>
+                        <h3>NordVPN</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>للوصول للمواقع المحجوبة وحماية الخصوصية</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">4 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">25 TON</span></li>
+                                <li>سنتين <span class="price-tag">40 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="nordvpn-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="nordvpn-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="nordvpn-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="nordvpn-period" class="form-control">
+                                    <option value="1">شهري</option>
+                                    <option value="12">سنوي</option>
+                                    <option value="24">سنتين</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="NordVPN" data-price="4">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Surfshark -->
+                <div class="service-card google-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-user-shield service-icon"></i>
+                        <h3>Surfshark VPN</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>خدمة VPN متقدمة بأسعار تنافسية</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">3.5 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">22 TON</span></li>
+                                <li>سنتين <span class="price-tag">35 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="surfshark-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="surfshark-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="surfshark-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="surfshark-period" class="form-control">
+                                    <option value="1">شهري</option>
+                                    <option value="12">سنوي</option>
+                                    <option value="24">سنتين</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Surfshark VPN" data-price="3.5">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة ExpressVPN -->
+                <div class="service-card xbox-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-lock service-icon"></i>
+                        <h3>ExpressVPN</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>خدمة VPN سريعة وموثوقة</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">5 TON</span></li>
+                                <li>6 أشهر <span class="price-tag">27 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">45 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="expressvpn-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="expressvpn-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="expressvpn-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="expressvpn-period" class="form-control">
+                                    <option value="1">شهري</option>
+                                    <option value="6">6 أشهر</option>
+                                    <option value="12">سنوي</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="ExpressVPN" data-price="5">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Bitdefender -->
+                <div class="service-card bitdefender-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-shield-virus service-icon"></i>
+                        <h3>Bitdefender Premium</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>حماية من الفيروسات والاختراق</p>
+                            
+                            <ul class="pricing-list">
+                                <li>3 أجهزة - سنة كاملة <span class="price-tag">20 TON</span></li>
+                                <li>5 أجهزة - سنة كاملة <span class="price-tag">30 TON</span></li>
+                                <li>10 أجهزة - سنة كاملة <span class="price-tag">45 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="bitdefender-devices"><i class="fas fa-laptop"></i> عدد الأجهزة</label>
+                                <select id="bitdefender-devices" class="form-control">
+                                    <option value="3">3 أجهزة</option>
+                                    <option value="5">5 أجهزة</option>
+                                    <option value="10">10 أجهزة</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Bitdefender Premium" data-price="20">
+                                <i class="fas fa-bolt"></i> اشتر الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Kaspersky Premium -->
+                <div class="service-card playstation-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-virus-slash service-icon"></i>
+                        <h3>Kaspersky Premium</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>حماية متكاملة من التهديدات الإلكترونية</p>
+                            
+                            <ul class="pricing-list">
+                                <li>3 أجهزة - سنة كاملة <span class="price-tag">22 TON</span></li>
+                                <li>5 أجهزة - سنة كاملة <span class="price-tag">32 TON</span></li>
+                                <li>10 أجهزة - سنة كاملة <span class="price-tag">48 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="kaspersky-devices"><i class="fas fa-laptop"></i> عدد الأجهزة</label>
+                                <select id="kaspersky-devices" class="form-control">
+                                    <option value="3">3 أجهزة</option>
+                                    <option value="5">5 أجهزة</option>
+                                    <option value="10">10 أجهزة</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Kaspersky Premium" data-price="22">
+                                <i class="fas fa-bolt"></i> اشتر الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="category-title">🎮 برامج وألعاب بريميوم</h3>
+            <div class="services-grid">
+                <!-- خدمة Xbox Game Pass -->
+                <div class="service-card xbox-card visible">
+                    <div class="service-header">
+                        <i class="fab fa-xbox service-icon"></i>
+                        <h3>Xbox Game Pass Ultimate</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>ألعاب على الكونسول والكمبيوتر والسحابة</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">6 TON</span></li>
+                                <li>3 أشهر <span class="price-tag">16 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">55 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="xbox-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="xbox-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="xbox-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="xbox-period" class="form-control">
+                                    <option value="1">شهري</option>
+                                    <option value="3">3 أشهر</option>
+                                    <option value="12">سنوي</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Xbox Game Pass Ultimate" data-price="6">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة PlayStation Plus -->
+                <div class="service-card playstation-card visible">
+                    <div class="service-header">
+                        <i class="fab fa-playstation service-icon"></i>
+                        <h3>PlayStation Plus</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>ألعاب مجانية كل شهر وأونلاين بلاي</p>
+                            
+                            <ul class="pricing-list">
+                                <li>Essential - شهر واحد <span class="price-tag">4 TON</span></li>
+                                <li>Extra - شهر واحد <span class="price-tag">7 TON</span></li>
+                                <li>Premium - شهر واحد <span class="price-tag">9 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="ps-username"><i class="fas fa-user"></i> اسم المستخدم</label>
+                                <input type="text" id="ps-username" class="form-control" placeholder="PSN Username">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="ps-plan"><i class="fas fa-crown"></i> نوع الاشتراك</label>
+                                <select id="ps-plan" class="form-control">
+                                    <option value="essential">Essential</option>
+                                    <option value="extra">Extra</option>
+                                    <option value="premium">Premium</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="PlayStation Plus" data-price="4">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة GeForce NOW -->
+                <div class="service-card nordvpn-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-cloud service-icon"></i>
+                        <h3>GeForce NOW</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>ألعاب سحابية بجودة عالية</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">7 TON</span></li>
+                                <li>6 أشهر <span class="price-tag">35 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">60 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="geforce-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="geforce-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="geforce-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="geforce-period" class="form-control">
+                                    <option value="1">شهري</option>
+                                    <option value="6">6 أشهر</option>
+                                    <option value="12">سنوي</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="GeForce NOW" data-price="7">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة Shadow -->
+                <div class="service-card duolingo-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-desktop service-icon"></i>
+                        <h3>Shadow</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>كمبيوتر سحابي كامل المواصفات</p>
+                            
+                            <ul class="pricing-list">
+                                <li>شهر واحد <span class="price-tag">15 TON</span></li>
+                                <li>3 أشهر <span class="price-tag">40 TON</span></li>
+                                <li>سنة كاملة <span class="price-tag">140 TON</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label for="shadow-email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" id="shadow-email" class="form-control" placeholder="email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="shadow-period"><i class="fas fa-calendar"></i> فترة الاشتراك</label>
+                                <select id="shadow-period" class="form-control">
+                                    <option value="1">شهري</option>
+                                    <option value="3">3 أشهر</option>
+                                    <option value="12">سنوي</option>
+                                </select>
+                            </div>
+                            
+                            <button class="service-btn" data-service="Shadow" data-price="15">
+                                <i class="fas fa-bolt"></i> اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="category-title">⭐ نجوم Telegram</h3>
+            <div class="services-grid">
+                <!-- خدمة نجوم Telegram -->
+                <div class="service-card stars-card visible">
+                    <div class="service-header">
+                        <i class="fas fa-star service-icon"></i>
+                        <h3>نجوم Telegram مخصصة</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-details">
+                            <p>اشترِ نجوم لمعجبيك وقناتك بكل سهولة</p>
+                            
+                            <div class="form-group">
+                                <label for="stars-username"><i class="fas fa-user"></i> اسم المستخدم</label>
+                                <input type="text" id="stars-username" class="form-control" placeholder="@username">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="custom-stars-count"><i class="fas fa-star"></i> عدد النجوم</label>
+                                <input type="number" id="custom-stars-count" min="100" max="10000" step="100" value="300" class="form-control" placeholder="أدخل عدد النجوم">
+                            </div>
+                            
+                            <div class="quick-stars">
+                                <div class="star-btn" data-stars="100">100 نجوم</div>
+                                <div class="star-btn" data-stars="300">300 نجوم</div>
+                                <div class="star-btn" data-stars="500">500 نجوم</div>
+                                <div class="star-btn" data-stars="1000">1000 نجوم</div>
+                            </div>
+                            
+                            <p>السعر: <span class="price-tag" id="stars-price">3 TON</span></p>
+                        </div>
+                        
+                        <button class="service-btn" data-service="نجوم Telegram" data-price="3">
+                            <i class="fas fa-bolt"></i> اشتر النجوم
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>DigitalPrime</h3>
+                <p>نقدم أفضل الخدمات الرقمية بأسعار تنافسية وطرق دفع آمنة وسهلة. شحن فوري وضمان استعادة الأموال.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-left"></i> جميع الخدمات</a></li>
+                    <li><a href="#entertainment"><i class="fas fa-chevron-left"></i> الترفيه والميديا</a></li>
+                    <li><a href="#music"><i class="fas fa-chevron-left"></i> الموسيقى والصوت</a></li>
+                    <li><a href="#education"><i class="fas fa-chevron-left"></i> التعليم</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>خدماتنا</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-left"></i> Netflix Premium</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-left"></i> YouTube Premium</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-left"></i> Spotify Premium</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-left"></i> نجوم Telegram</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-left"></i> خدمات جديدة قريباً</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>الدعم الفني</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-headset"></i> الدعم المباشر</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> support@digitalprime.com</a></li>
+                    <li><a href="#"><i class="fab fa-telegram"></i> Telegram Support</a></li>
+                    <li><a href="#"><i class="fas fa-file-alt"></i> سياسة الاستخدام</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 DigitalPrime. جميع الحقوق محفوظة.
+        </div>
+    </footer>
+
+    <script src="react.js">
+
+    </script>
+</body>
+</html>
