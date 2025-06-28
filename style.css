@@ -16,6 +16,8 @@
             --glow: 0 0 20px rgba(20, 184, 166, 0.5);
             --section-gap: 5rem;
         }
+a{
+        text-decoration:none;}
 
         * {
             margin: 0;
