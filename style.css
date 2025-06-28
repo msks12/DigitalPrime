@@ -1,0 +1,1143 @@
+        :root {
+            --primary-dark: #0f172a;
+            --primary-blue: #2563eb;
+            --primary-purple: #7e22ce;
+            --accent-teal: #14b8a6;
+            --netflix-red: #e50914;
+            --spotify-green: #1db954;
+            --youtube-red: #ff0000;
+            --amazon-orange: #ff9900;
+            --disney-blue: #113ccf;
+            --shahid-green: #00a79d;
+            --apple-gray: #a2aaad;
+            --light-text: #f1f5f9;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --card-bg: rgba(30, 41, 59, 0.8);
+            --glow: 0 0 20px rgba(20, 184, 166, 0.5);
+            --section-gap: 5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top right, #0f172a 0%, #1e293b 100%);
+            color: var(--light-text);
+            overflow-x: hidden;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* شريط التنقل العصري */
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.2rem 2rem;
+            border-bottom: 1px solid rgba(126, 34, 206, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--light-text);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            color: var(--accent-teal);
+            animation: pulse 2s infinite;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.6rem 1rem;
+            border-radius: 0.3rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent-teal);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-teal);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 1rem;
+        }
+
+        .btn-register {
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            color: white;
+            box-shadow: 0 4px 15px rgba(126, 34, 206, 0.4);
+        }
+
+        .btn-register:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(126, 34, 206, 0.6);
+        }
+
+        /* المحتوى الرئيسي */
+        main {
+            padding-top: 7rem;
+        }
+
+        /* قسم البطل المبهر */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(126, 34, 206, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            animation: rotate 20s linear infinite;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--accent-teal), var(--primary-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            color: white;
+            padding: 1rem 2.2rem;
+            font-size: 1.1rem;
+            box-shadow: var(--glow);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(126, 34, 206, 0.6);
+        }
+
+        /* قسم الخدمات المبهر */
+        .services {
+            padding: var(--section-gap) 2rem;
+            position: relative;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            display: inline-block;
+            background: linear-gradient(90deg, var(--accent-teal), var(--primary-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-teal);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+            opacity: 0.8;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 1.2rem;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(126, 34, 206, 0.3);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        .service-card.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 40px rgba(126, 34, 206, 0.4), var(--glow);
+        }
+
+        /* تخصيص ألوان البطاقات حسب الخدمة */
+        .telegram-card .service-header {
+            background: linear-gradient(135deg, #0088cc, #34b7f1);
+        }
+        
+        .netflix-card .service-header {
+            background: linear-gradient(135deg, #b1060e, #e50914);
+        }
+        
+        .spotify-card .service-header {
+            background: linear-gradient(135deg, #1db954, #1ed760);
+        }
+        
+        .stars-card .service-header {
+            background: linear-gradient(135deg, #7e22ce, #c084fc);
+        }
+
+        .youtube-card .service-header {
+            background: linear-gradient(135deg, #ff0000, #ff4d4d);
+        }
+        
+        .prime-card .service-header {
+            background: linear-gradient(135deg, #ff9900, #ffad33);
+        }
+        
+        .disney-card .service-header {
+            background: linear-gradient(135deg, #113ccf, #3a6eff);
+        }
+        
+        .shahid-card .service-header {
+            background: linear-gradient(135deg, #00a79d, #00ccbf);
+        }
+        
+        .anghami-card .service-header {
+            background: linear-gradient(135deg, #ff0040, #ff3370);
+        }
+        
+        .apple-music-card .service-header {
+            background: linear-gradient(135deg, #fa243c, #ff5c7a);
+        }
+        
+        .deezer-card .service-header {
+            background: linear-gradient(135deg, #feaa2d, #ffc266);
+        }
+        
+        .coursera-card .service-header {
+            background: linear-gradient(135deg, #0056d2, #0066ff);
+        }
+        
+        .duolingo-card .service-header {
+            background: linear-gradient(135deg, #58cc02, #8aff4d);
+        }
+        
+        .microsoft-card .service-header {
+            background: linear-gradient(135deg, #7cbb00, #a5e000);
+        }
+        
+        .google-card .service-header {
+            background: linear-gradient(135deg, #4285f4, #5b9bff);
+        }
+        
+        .canva-card .service-header {
+            background: linear-gradient(135deg, #2b4cff, #5d7bff);
+        }
+        
+        .adobe-card .service-header {
+            background: linear-gradient(135deg, #ff0000, #ff3333);
+        }
+        
+        .nordvpn-card .service-header {
+            background: linear-gradient(135deg, #4687ff, #5d9bff);
+        }
+        
+        .bitdefender-card .service-header {
+            background: linear-gradient(135deg, #ed1c24, #ff4d55);
+        }
+        
+        .xbox-card .service-header {
+            background: linear-gradient(135deg, #107c10, #1db954);
+        }
+        
+        .playstation-card .service-header {
+            background: linear-gradient(135deg, #003087, #0047bb);
+        }
+
+        .service-header {
+            padding: 2rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            z-index: 0;
+            animation: rotate 15s linear infinite;
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-header h3 {
+            font-size: 1.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-content {
+            padding: 2rem 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-details {
+            margin-bottom: 1.8rem;
+            flex-grow: 1;
+        }
+
+        .service-details p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .pricing-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .pricing-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed rgba(200, 200, 200, 0.15);
+            font-size: 1.1rem;
+        }
+
+        .pricing-list li:last-child {
+            border-bottom: none;
+        }
+
+        .price-tag {
+            background: rgba(20, 184, 166, 0.2);
+            color: var(--accent-teal);
+            padding: 0.3rem 0.8rem;
+            border-radius: 0.3rem;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-form {
+            margin-top: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 0.6rem;
+            border: 1px solid rgba(126, 34, 206, 0.3);
+            background: rgba(15, 23, 42, 0.6);
+            color: var(--light-text);
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 3px rgba(126, 34, 206, 0.3);
+        }
+
+        .service-btn {
+            display: block;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            color: var(--light-text);
+            padding: 1.1rem;
+            border-radius: 0.6rem;
+            transition: var(--transition);
+            text-decoration: none;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(126, 34, 206, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .service-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .service-btn:hover::before {
+            left: 100%;
+        }
+
+        .service-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(126, 34, 206, 0.6);
+        }
+
+        /* قسم الخصومات */
+        .discount-banner {
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            padding: 2.5rem;
+            text-align: center;
+            margin: 4rem auto;
+            border-radius: 1.2rem;
+            max-width: 1200px;
+            box-shadow: 0 10px 30px rgba(126, 34, 206, 0.4);
+            animation: pulse 3s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .discount-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            z-index: 0;
+            animation: rotate 20s linear infinite;
+        }
+
+        .discount-banner h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .discount-banner p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* الفوتر */
+        footer {
+            background: rgba(15, 23, 42, 0.95);
+            border-top: 1px solid rgba(126, 34, 206, 0.3);
+            padding: 3rem 2rem 2rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-column h3 {
+            color: var(--accent-teal);
+            margin-bottom: 1.8rem;
+            font-size: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -0.7rem;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-purple);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-teal);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(126, 34, 206, 0.2);
+            color: var(--light-text);
+            transition: var(--transition);
+            font-size: 1.3rem;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-purple);
+            transform: translateY(-5px);
+            box-shadow: var(--glow);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2.5rem;
+            margin-top: 2.5rem;
+            border-top: 1px solid rgba(200, 200, 200, 0.1);
+            opacity: 0.7;
+            font-size: 1rem;
+        }
+
+        /* واجهة اختيار المحفظة */
+        .wallet-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .wallet-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .wallet-content {
+            background: var(--card-bg);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+            transform: translateY(30px);
+            transition: transform 0.5s ease;
+            border: 1px solid var(--primary-purple);
+            position: relative;
+        }
+
+        .wallet-modal.active .wallet-content {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: transparent;
+            border: none;
+            color: var(--light-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--accent-teal);
+            transform: rotate(90deg);
+        }
+
+        .wallet-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--accent-teal);
+            font-size: 1.8rem;
+        }
+
+        .wallet-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .wallet-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 1.5rem;
+            background: rgba(20, 184, 166, 0.1);
+            border: 1px solid var(--accent-teal);
+            border-radius: 0.8rem;
+            color: var(--light-text);
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: right;
+        }
+
+        .wallet-btn:hover {
+            background: rgba(20, 184, 166, 0.3);
+            transform: translateY(-3px);
+            box-shadow: var(--glow);
+        }
+
+        .wallet-btn i {
+            font-size: 1.5rem;
+        }
+
+        .wallet-info {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 0.8rem;
+            font-size: 0.9rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* طرق دفع إضافية */
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .payment-option:hover {
+            background: rgba(126, 34, 206, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .payment-option i {
+            font-size: 2rem;
+            color: var(--accent-teal);
+        }
+
+        .payment-option .details {
+            flex-grow: 1;
+        }
+
+        .payment-option .details h4 {
+            margin-bottom: 0.3rem;
+        }
+
+        .payment-option .details p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* واجهة تفعيل الدفع */
+        .payment-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .payment-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .payment-content {
+            background: var(--card-bg);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+            transform: translateY(30px);
+            transition: transform 0.5s ease;
+            border: 1px solid var(--primary-purple);
+            position: relative;
+        }
+
+        .payment-modal.active .payment-content {
+            transform: translateY(0);
+        }
+
+        .close-payment-modal {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: transparent;
+            border: none;
+            color: var(--light-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-payment-modal:hover {
+            color: var(--accent-teal);
+            transform: rotate(90deg);
+        }
+
+        .payment-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--accent-teal);
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .payment-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .payment-form .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .payment-form .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .payment-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .payment-form .form-control {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 0.6rem;
+            border: 1px solid rgba(126, 34, 206, 0.3);
+            background: rgba(15, 23, 42, 0.6);
+            color: var(--light-text);
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .payment-form .form-control:focus {
+            outline: none;
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 3px rgba(126, 34, 206, 0.3);
+        }
+
+        .payment-submit-btn {
+            display: block;
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            color: var(--light-text);
+            border: none;
+            border-radius: 0.8rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(126, 34, 206, 0.4);
+            grid-column: span 2;
+        }
+
+        .payment-submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(126, 34, 206, 0.6);
+        }
+
+        .payment-summary {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 0.8rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(126, 34, 206, 0.3);
+        }
+
+        .payment-summary h4 {
+            color: var(--accent-teal);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+        }
+
+        /* تأثيرات الحركة */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* تحسينات للجوال */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .discount-banner h3 {
+                font-size: 2rem;
+            }
+            
+            .discount-banner p {
+                font-size: 1.1rem;
+            }
+            
+            .payment-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-form .form-group.full-width {
+                grid-column: span 1;
+            }
+            
+            .payment-submit-btn {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 4rem 1rem 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .service-card {
+                border-radius: 1rem;
+            }
+        }
+
+        /* تنسيقات إضافية */
+        .category-title {
+            text-align: center;
+            margin: 3rem 0 1.5rem;
+            padding: 1rem 0;
+            position: relative;
+            font-size: 2.2rem;
+            color: var(--accent-teal);
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary-purple);
+            border-radius: 2px;
+        }
+
+        .quick-stars {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .star-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(126, 34, 206, 0.2);
+            border: 1px solid rgba(126, 34, 206, 0.5);
+            border-radius: 0.5rem;
+            color: var(--light-text);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .star-btn:hover {
+            background: rgba(126, 34, 206, 0.4);
+        }
+
+        .star-btn.active {
+            background: var(--primary-purple);
+            box-shadow: var(--glow);
+        }
+        
+        /* تخصيصات خاصة لخدمة Telegram Premium */
+        .telegram-card .service-header {
+            background: linear-gradient(135deg, #0088cc, #34b7f1);
+        }
+        
+        .features {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 136, 204, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #0088cc;
+        }
+        
+        .features h4 {
+            color: #34b7f1;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .features ul {
+            list-style: none;
+            padding-right: 10px;
+        }
+        
+        .features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .features li i {
+            color: #34b7f1;
+            margin-top: 3px;
+        }
